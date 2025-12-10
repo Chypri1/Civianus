@@ -220,14 +220,14 @@ void actionColon(SDL_Renderer *renderer, int row, int col, Civilisation *civilis
                         if (civilisation->nbVilles < 35) {
 
                             Ville * nouvelleVille = malloc(sizeof(Ville));
-                            // {
-                            //     .posX = col,
-                            //     .posY = row,
-                            //     .population = 1,
-                            //     .nourriture = 1,
-                            //     .production = 1,
-                            //     .sciences = 1,
-                            // };
+                            *nouvelleVille = (Ville){
+                                .posX = col,
+                                .posY = row,
+                                .population = 1,
+                                .nourriture = 1,
+                                .production = 1,
+                                .sciences = 1,
+                            };
 
                             // snprintf(nouvelleVille.nom, sizeof(nouvelleVille.nom), "Ville %d", civilisation->nbVilles + 1);
 
