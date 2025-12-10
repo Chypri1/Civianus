@@ -1,0 +1,26 @@
+# Extension de l'exécutable en fonction du système d'exploitation
+EXTAPP =
+
+# Cibles supplémentaires pour le make all en fonction du système d'exploitation
+CIBLE_ARCH =
+
+# Paramètres pour la commande clean en fonction du système d'exploitation
+PARAM_CLEAN =
+
+# Paramètres pour l'initialisation des dossiers
+PARAM_INIT = 
+
+# Détecte le système d'exploitation
+ifeq ($(ARCH),win)
+    # Compilation sous Windows
+    LDFLAGS = -I./include -Llib -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lm
+    EXTAPP = .exe
+    PARAM_CLEAN = -f
+    PARAM_INIT = -p
+else
+    # Compilation sous Linux
+    LDFLAGS = -I./include -Llib -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer -lm 
+    CIBLE_ARCH = init
+    PARAM_CLEAN = -f
+    PARAM_INIT = -p
+endif
